@@ -1,0 +1,84 @@
+{% load static %}
+
+  {% include 'head.html' %}
+  {% include 'header.html' %}
+
+  <main class="main">
+
+    <section id="hero" class="heroIndumentaria section light-background">
+      <div class="icon-boxes position-relative" data-aos="fade-up" data-aos-delay="200">
+        <div class="container position-relative"  style="display: flex; justify-content: center;">
+          <div class="row gy-4 mt-5" style="justify-content: center;">
+            {% for tipo in tipos %}
+            <div class="col-xl-1 col-md-3">
+              <div class="icon-box-tienda-red">
+                <div class="icon"style="width: 100%;">
+                  <a href="/indumentaria/tipo/{{tipo.id}}">
+                  <img src="{{tipo.imagen.url}}" alt="" style="color:#000">
+                  </a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            {% for disc in disciplinas %}
+            <div class="col-xl-1 col-md-3">
+              <div class="icon-box-tienda">
+                <div class="icon"style="width: 100%;">
+                  <a href="/indumentaria/disciplina/{{disc.id}}">
+                  <img src="{{disc.imagen.url}}" alt="" style="color:#000">
+                  </a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="col-xl-1 col-md-3">
+              <div class="icon-box-tienda">
+                <a href="/indumentaria">
+                <h4>+</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <div><span>Vestite de </span> <span class="description-title">Verde</span></div>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+          {% for articulo in articulos %}
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pricing-tem">
+{% comment %}               {% if articulo.destacado %}
+                <span class="featured">Novedad</span>
+              {% endif %} {% endcomment %}
+              <span class="featured" style="background: {{ articulo.disciplina.color }}">{{ articulo.disciplina }}</span>
+              <h3>{{ articulo.nombre }}</h3>
+              <div class="price">$ {{ articulo.precio }}</div>
+              <div class="icon">
+                <img src="{{articulo.imagen.url}}" style="width: 200px;" alt="">
+              </div>
+              <ul>
+                <li>Stock disponible: {{ articulo.stock }}</li>
+              </ul>
+              <a href="#" class="btn-buy">Pedir</a>
+            </div>
+          </div><!-- End Pricing Item -->
+          {% endfor %}
+
+        </div><!-- End pricing row -->
+
+      </div>
+
+    </section><!-- /Pricing Section -->
+
+  <main>
+  
+  {% include 'footer.html' %}

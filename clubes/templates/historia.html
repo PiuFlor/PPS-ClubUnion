@@ -1,0 +1,73 @@
+{% load static %}
+
+  {% include 'head.html' %}
+  {% include 'header.html' %}
+  
+    {% comment %} {% if messages %}
+      <div class="messages">
+          {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+              </div>
+          {% endfor %}
+      </div>
+    {% endif %} {% endcomment %}
+
+    <!-- About Section -->
+    <section id="quienes-somos" class="about section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <h4 class="who-we-are-h4 mb-4">NUESTRA HISTORIA</h4>
+            <h3 class="bt-4">Tradición, Comunidad y Compromiso</h3>
+            <p class="p-who-we-are">
+                En 1939 un grupo de vecinos se reúnen en un precario local con la intención de fundar una institución que amplié la actividad social y cultural del barrio. Es por eso que se funda la Biblioteca Domingo Faustino Sarmiento en una casa particular en Dinamarca y Quintana, con ayuda de vecinos y la incipiente Sociedad de Fomento Unión y Progreso esta cambia su emplazamiento anexándose a Unión y Progreso trasladándose al lugar que ocupa hoy en día.
+            </p>
+            <p class="p-who-we-are">
+                A partir de esos años nuestra querida Sociedad de Fomento gracias a sus actividades sociales (tertulias bailables) pileta y actividades deportivas ha ido solo en crecimiento lento y paulatino teniendo hoy en día una de las mejores instalaciones en su Polideportivo, un Gimnasio alternativo (el más antiguo) un Salón de Usos Múltiples, los Altos de Unión (eventos privados) las Piletas de Natación, una Cancha Sintética de Fútbol 7, un Salón donde funciona Sucursal del Banco de la Provincia de Buenos Aires, una Sala de Primeros Auxilios, Secretaria de la Institución y nuestra Biblioteca Domingo Faustino Sarmiento, además cuenta con un predio deportivo denominado la Quinta La Florida a unas 9 cuadras de esta Institución la que fue adquirida por el año 1979 que cuenta con Quincho, Cantina Vestuarios, Parrillas, Cancha de Futbol, Cancha de Hockey, Pista de Atletismo, Cancha de Pelota Paleta y Cancha de Paddle.
+            </p>
+            <p class="p-who-we-are">
+                En la actualidad contamos con aproximadamente 700 deportistas los que año a año se van sumando a este tricolor que siempre apunta al deporte y la cultura para formar a nuestros niños.
+                La institución logro con gran esfuerzo volver a trabajar con la Quinta La Florida para poder destinarlo nuevamente por el uso del socio en las diferentes actividades que se practican en ese espacio.
+                Además, se pudo lograr con gran esfuerzo la obra de la pileta techada que implica el inicio de una nueva actividad en el club y otro servicio brindado.
+            </p>
+            
+            <!--<ul>
+              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+            </ul>-->
+
+            <a href="/asociarme" class="read-more"><span>Hacete Socio</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+
+          <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-4">
+              <div class="col-lg-6">
+                <img src="{% static 'img/about-company-1.jpg' %}" class="img-fluid" alt="">
+              </div>
+              <div class="col-lg-6">
+                <div class="row gy-4">
+                  <div class="col-lg-12">
+                    <img src="{% static 'img/about-company-2.jpg' %}" class="img-fluid" alt="">
+                  </div>
+                  <div class="col-lg-12">
+                    <img src="{% static 'img/about-company-3.jpg' %}" class="img-fluid" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- /About Section -->
+
+
+
+  {% include 'footer.html' %}

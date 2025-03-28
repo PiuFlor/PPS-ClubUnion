@@ -1,0 +1,204 @@
+
+<form id="msform" method="POST" >
+    {% csrf_token %}
+    <!-- progressbar -->
+    <ul id="progressbar">
+        <li class="active">INSCRIPCIÓN</li>
+        <li>DATOS PERSONALES</li>
+        <li>DATOS DE CONTACTO</li>
+        <li>DATOS DE SALUD</li>
+        <li>HISTORIAL MEDICO</li>
+        <li>DATOS ESCOLARES</li>
+    </ul>
+
+    <!-- divs -->
+    <div class="fieldset-group active">
+      <label for="disciplinas" class="form-label">Disciplinas a inscibirse</label>
+      <h6 class="fs-title">Mantenga presionado "Ctrl" o "Command" en Mac, para seleccionar más de una opción.</h6>
+      <select id="disciplinas" name="disciplinas" multiple size="7" required>
+        {% for disciplina in disciplinas %}
+            <option value="{{ disciplina.id }}">{{ disciplina.nombre }}</option>
+        {% endfor %}
+      </select>
+
+      <input type="button" class="next action-button" value="Next" />
+
+    </div>
+    <div class="fieldset-group">
+        <h2 class="fs-title">Datos Personales</h2>
+        <input type="text" name="nombre" placeholder="Nombre Completo" required/>
+        <input type="text" name="apellido" placeholder="Apellido" required/>
+        <div class="form-group">
+          <label for="fecha_nac" class="form-label">Fecha de Nacimiento</label>
+          <input type="date" id="fecha_nac" name="fecha_nac" class="form-input" required>
+          <label for="fecha_nac" class="form-label-error"></label>
+          
+        </div>
+        <select id="tipo_doc" name="tipo_doc" required>
+          <option value="">Seleccione un Tipo de Documento</option>
+          {% for tipo in tipos_doc %}
+              <option value="{{ tipo.id }}">{{ tipo.nombre }}</option>
+          {% endfor %}
+        </select>
+        <div class="form-group">
+          <input type="text" id="nro_doc" name="nro_doc" placeholder="Número de Documento" required/>
+          <label for="nro_doc" class="form-label-error"></label>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" id="CUIL" name="CUIL" placeholder="CUIL" required/>
+          <label for="CUIL" class="form-label-error"></label>
+        </div>
+        
+        <select id="genero" name="genero" required>
+          <option value="">Seleccione un Género</option>
+          {% for gen in generos %}
+              <option value="{{ gen.id }}">{{ gen.nombre }}</option>
+          {% endfor %}
+        </select>
+
+        <h2 class="fs-title">Tutor/a</h2>
+        <label for="nombre_responsable" class="form-label">Si el Socio es menor y/o tiene un Tutor/a Legal completar los siguientes campos:</label>
+        <input type="text" id="nombre_responsable" name="nombre_responsable" placeholder="Nombre y Apellido del Responsable" />
+        <input type="text" name="nro_tel_responsable" placeholder="Número de Teléfono" />
+        <input type="email" name="email_responsable" placeholder="Email" />
+      
+        <input type="button" class="previous action-button" value="Previous" />
+        <input type="button" class="next action-button" value="Next" />
+    </div>
+    <div class="fieldset-group">
+        <h2 class="fs-title">Datos de Contacto</h2>
+        <select id="ciudad" name="ciudad" required>
+          <option value="">Seleccione una Ciudad</option>
+          {% for c in ciudades %}
+              <option value="{{ c.id }}">{{ c.nombre }}</option>
+          {% endfor %}
+        </select>
+        <input type="text" name="direccion" placeholder="Dirección" required/>
+        <input type="text" name="nro_tel" placeholder="Número de Teléfono" required/>
+        <div class="form-group">
+          <input type="email" name="email" id="email" placeholder="Email" />
+          <label for="email" class="form-label-error"></label>
+        </div>
+        <div class="form-group">
+          <select id="usa_email" name="usa_email" required>
+            <option value="">Usas email?</option>
+            <option value="1">Sí</option>
+            <option value="2">No</option>
+          </select>
+          <label for="usa_email" class="form-label-error"></label>
+        </div>
+        <input type="button" class="previous action-button" value="Previous" />
+        <input type="button" class="next action-button" value="Next" />
+    </div>
+
+    <div class="fieldset-group">
+      <h2 class="fs-title">Datos Generales de Salud</h2>
+      <label for="grupo_sanguineo" class="form-label">Grupo Sanguíneo</label>
+      <select id="grupo_sanguineo" name="grupo_sanguineo" required>
+        {% for grupo in grupos_sanguineos %}
+            <option value="{{ grupo.id }}">{{ grupo.nombre }}</option>
+        {% endfor %}
+      </select>
+
+      <input type="number" name="peso" placeholder="Peso (Kg)" step="0.01" min="0" required/>
+      <input type="number" name="altura" placeholder="Altura (Metros)" step="0.01" min="0" required/>
+            
+      <input type="text" name="cobertura" placeholder="Cobertura Médica" />
+      <input type="text" name="nro_cobertura" placeholder="Número de Cobertura Médica" />
+      <input type="text" name="medico" placeholder="Nombre Médico/a de Cabecera" />
+
+      <input type="button" class="previous action-button" value="Previous" />
+      <input type="button" class="next action-button" value="Next" />
+  </div>
+  <div class="fieldset-group">
+      <h2 class="fs-title">Historial Médico</h2>
+      <h6 class="fs-title">Mantenga presionado "Ctrl" o "Command" en Mac, para seleccionar más de una opción.</h6>
+      <div class="form-group">
+        <label for="enf_cronica" class="form-label">Enfermedades Crónicas</label>
+        <select id="enf_cronica" name="enf_cronica" multiple>
+          {% for enf in enf_cronicas %}
+              <option value="{{ enf.id }}">{{ enf.nombre }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="enf_infancia" class="form-label">Enfermedades de la Infancia</label>
+        <select id="enf_infancia" name="enf_infancia" multiple>
+          {% for enf in enf_infancia %}
+              <option value="{{ enf.id }}">{{ enf.nombre }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <select id="enf_huesos" name="enf_huesos" required>
+        <option value="">Tenes/Tuviste enfermedades de huesos?</option>
+        <option value="1">Sí</option>
+        <option value="2" selected>No</option>
+      </select>
+      <select id="enf_nerviosas" name="enf_nerviosas" required>
+        <option value="">Tenes/Tuviste enfermedades nerviosas?</option>
+        <option value="1">Sí</option>
+        <option value="2" selected>No</option>
+      </select>
+      <select id="enf_digestivas" name="enf_digestivas" required>
+        <option value="">Tenes/Tuviste enfermedades digestivas</option>
+        <option value="1">Sí</option>
+        <option value="2" selected>No</option>
+      </select>
+      <div class="form-group">
+        <label for="vacunas" class="form-label">Vacunas</label>
+        <select id="vacunas" name="vacunas" multiple>
+          {% for vacuna in vacunas %}
+              <option value="{{ vacuna.id }}">{{ vacuna.nombre }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="alergias" class="form-label">Alergias</label>
+        <select id="alergias" name="alergias" multiple>
+          {% for alergia in alergias %}
+              <option value="{{ alergia.id }}">{{ alergia.nombre }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dificultades" class="form-label">Dificultades</label>
+        <select id="dificultades" name="dificultades" multiple>
+          {% for dificultad in dificultades %}
+              <option value="{{ dificultad.id }}">{{ dificultad.nombre }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="medicamentos" class="form-label">Medicamentos Consumidos Habitualmente</label>
+        <select id="medicamentos" name="medicamentos" multiple>
+          {% for medicamento in medicamentos %}
+              <option value="{{ medicamento.id }}">{{ medicamento.nombre }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <input type="button" class="previous action-button" value="Previous" />
+      <input type="button" class="next action-button" value="Next" />
+  </div>
+  <div class="fieldset-group">
+        <h2 class="fs-title">Datos Escolares</h2>
+        <label for="fecha_nac" class="form-label">Si el Socio concurre a la Escuela completar los siguientes campos:</label>
+        <select id="escuela" name="escuela">
+          <option value="">Seleccione una Escuela</option>
+          {% for escuela in escuelas %}
+              <option value="{{ escuela.id }}">{{ escuela.nombre }}</option>
+          {% endfor %}
+        </select>
+        <input type="number" name="anio_escolar" placeholder="Año Escolar" min=0/>
+        <input type="text" name="turno_escolar" placeholder="Turno Escolar"/>
+        <input type="text" name="tipo_contacto_escolar" placeholder="Tipo de Contacto Escolar"/>
+        <input type="text" name="nombre_contacto_escolar" placeholder="Nombre y Apellido del Contacto Escolar"/>
+        <input type="text" name="tel_contacto_escolar" placeholder="Número del Contacto Escolar"/>
+        <input type="email" name="email_contacto_escolar" placeholder="Email del Contacto Escolar" />
+      
+        <input type="button" class="previous action-button" value="Previous" />
+        <input type="submit" class="submit action-button" value="Submit" />
+  </div>
+</form>

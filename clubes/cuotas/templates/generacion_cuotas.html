@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generación de Cuotas</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'cuotas/css/generacion_cuotas.css' %}">
+</head>
+<body>
+    <h1>Generación de Cuotas</h1>
+    <form id="generarCuotasForm" method="post" action="/generacion_cuotas/">
+        {% csrf_token %}
+        
+        <label for="tipo_cuota">Tipo de Cuota:</label>
+        <select id="tipo_cuota" name="tipo_cuota" required>
+            <option value="">Seleccione un tipo de cuota</option>
+            <option value="dep">Cuota Deportiva</option>
+            <option value="soc">Cuota Social</option>
+        </select>
+        <label for="mes">Mes:</label>
+        <select id="mes" name="mes" required>
+            <option value="">Seleccione un Mes</option>
+            <option value="01">Enero</option>
+            <option value="02">Febrero</option>
+            <option value="03">Marzo</option>
+            <option value="04">Abril</option>
+            <option value="05">Mayo</option>
+            <option value="06">Junio</option>
+            <option value="07">Julio</option>
+            <option value="08">Agosto</option>
+            <option value="09">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+        <label for="anio">Año:</label>
+        <input type="number" id="anio" name="anio" min={{anio}} value={{anio}}  required>
+        <button type="submit">Generar Cuotas</button>
+    </form>
+    <script>
+        document.getElementById('generarCuotasForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el envío normal del formulario
+    
+            const formData = new FormData(this);
+    
+            fetch("{% url 'generacion_cuotas' %}", {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Cierra el popup
+                    window.close();
+                    // Redirige a la lista de cuotas en el admin
+                    window.opener.location.href = data.redirect_url;
+                }else {
+                    // Muestra el mensaje de error
+                    alert(data.mensaje_error);  // Este es el mensaje de error
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

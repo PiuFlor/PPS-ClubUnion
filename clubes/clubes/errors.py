@@ -1,0 +1,5 @@
+ERROR_CUIL_CUIT_INVALIDO = 'Por favor ingrese un cuit/cuil valido, solo debe ingresar los numeros'
+ERROR_EMAIL_EXISTE = 'El email ingresado ya corresponde a un usuario existente'
+ERROR_FECHA_DESDE_HASTA = 'La fecha desde debe ser menor a la fecha hasta'
+ERROR_VALOR_DESDE_HASTA = 'El valor ingresado debe estar entre 0 y 100'
+ERROR_VALOR_NEGATIVO = 'El valor ingresado debe ser mayor a 0'

@@ -1,0 +1,101 @@
+{% load static %}
+
+  {% include 'head.html' %}
+  {% include 'header.html' %}
+
+  {% if messages %}
+  <div class="messages">
+      {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+          </div>
+      {% endfor %}
+  </div>
+  {% endif %}
+
+
+  <main class="main">
+
+	<!-- BANNER -->
+<div class="subbanner-disciplina">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12 col-md-12" style="margin-left: 32px;">
+              <h2 class="heroDisciplinas" style="font-weight: 300; color:#fff">
+                  <img src="{{ disciplina.imagen.url }}" alt="Ícono" style="width: 62; height: 62px; margin-right: 8px; vertical-align: middle;">
+                  DISCIPLINA / <span style="font-weight: 600;">{{ disciplina.nombre }}</span>
+              </h2>
+          </div>
+      </div>
+  </div>
+</div>
+
+	
+	<!--SECTION BODY DISCIPLINA -->
+  <section id="quienes-somos" class="about section">
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+          <h4 class="who-we-are-h4 mb-4">DISCIPLINA</h4>
+          <h3 class="bt-4">{{disciplina.nombre}} en Unión</h3>
+          {{ disciplina.info|safe }}
+          <a href="/asociarme" class="read-more"><span>Hacete Socio</span><i class="bi bi-arrow-right"></i></a>
+        </div>
+
+        <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
+          <div class="row gy-4">
+            <div class="col-lg-6">
+              <img src="{{ disciplina.imagenContenido1.url }}" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-6">
+              <div class="row gy-4">
+                <div class="col-lg-12">
+                  <img src="{{ disciplina.imagenContenido2.url }}" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-12">
+                  <img src="{{ disciplina.imagenContenido3.url }}" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- /About Section -->
+
+
+      <!-- Section - Disciplinas -->
+      <div id="disciplinas" class="container section-title mt-5" data-aos="fade-up">
+        <h4 >OTRAS DISCIPLINAS</h4>
+        <div><span>Encuentra tu pasión</span> <span class="description-title">entre nuestros de deportes</span></div>
+        <p class="p-tienda">Ofrecemos disciplinas para todas las edades y niveles. ¡Descubre cuál es la tuya y súmate al equipo!</p>
+      </div><!-- End Disciplinas -->
+      
+      
+        <div class="hero-club section">
+            <div class="container position-relative">
+                <div class="row gy-4 mb-4">
+                    {% for disciplina_list in disciplinas %}
+                    {% if disciplina != disciplina_list %}
+                    <div class="col-xl-2 col-md-4">
+                    <div class="icon-box">
+                        <div class="icon">
+                            <img src="{{ disciplina_list.imagen.url }}" alt="Icono personalizado 1" style="width: 80px; height: 80px;">
+                        </div>
+                        <h4 class="title"><a href="/disciplina/{{ disciplina_list.id }}" class="stretched-link">{{ disciplina_list.nombre }}</a></h4>
+                    </div>
+                    </div><!--End Icon Box -->
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+  </main>
+
+  {% include 'footer.html' %}

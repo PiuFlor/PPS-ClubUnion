@@ -1,0 +1,201 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+}
+
+/* Fieldsets */
+#msform .fieldset-group {
+    background: white;
+    border: 0 none;
+    border-radius: 10px; /* Ajustar si necesitas bordes redondeados */
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); /* Restaurar sombra */
+    padding: 20px 30px;
+    width: 80%;
+    margin: 0 auto;
+    position: relative; /* Asegura el stacking adecuado */
+    display: none;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease-in-out;
+}
+
+/* Inputs */
+#msform input, #msform textarea, #msform select {
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: calc(100% - 30px); /* Ajustar para mantener el padding visible */
+    box-sizing: border-box;
+    font-family: montserrat;
+    font-size: 16px;
+    background-color: white; /* Fondo blanco */
+    border-radius: 5px; /* Bordes redondeados opcionales */
+}
+#msform select {
+    appearance: none; /* Elimina el estilo por defecto del navegador */
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Chrome, Safari */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140"><polyline points="20,50 70,100 120,50" stroke="gray" stroke-width="10" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px 12px;
+}
+
+#msform select:focus, #msform input:focus {
+    outline: none;
+    border-color: #1e894a;
+    box-shadow: 0 0 5px rgba(15, 133, 94, 0.5);
+}
+
+
+/* #msform select option {
+    font-size: 13px;
+    color: #333; /* Asegura un color consistente 
+}
+
+#msform select option:first-child {
+    color: #aaa; /* Color más claro para simular un placeholder 
+} */
+
+/* Botón de acción */
+#msform .action-button {
+    width: 120px; /* Aumentar para visibilidad */
+    background: #288313;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 25px; /* Restaurar bordes redondeados */
+    cursor: pointer;
+    padding: 10px 15px;
+    margin-top: 15px; /* Asegura separación del input */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Agregar sombra */
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra al hover */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+#msform .previous {
+    background: #75e1b2;
+    margin-right: 10px; /* Separar botones */
+}
+
+#msform .previous:hover, #msform .previous:focus {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Progress bar */
+#progressbar {
+    margin-bottom: 30px;
+    display: flex; /* Flex para alinear correctamente */
+    justify-content: space-between;
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 16px;
+    flex: 1;
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #288313;
+    position: absolute;
+    left: -45%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+.ver{
+    z-index:100;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active::after {
+    background: #288313;
+    color: white;
+}
+
+/* #progressbar li.active::after {
+    background: rgb(11, 166, 99);
+    color: white;
+} */
+
+
+
+#msform div.fieldset-group.active {
+    display: block; 
+    opacity: 1;
+    transform: scale(1);
+}
+/* .form-group {
+    margin-bottom: 1.5em; 
+} */
+
+.form-label {
+display: block;       
+text-align: left;     
+margin-bottom: 0.2em;
+padding: 5px 15px 0 15px; 
+font-size: 0.8em;  
+font-weight: bold; 
+}
+.form-label-error {
+    display: block;       
+    text-align: left;     
+    
+    padding: 0 15px; 
+    margin-bottom: 0.8em;
+    font-size: 0.7em;  
+    color: red; 
+}
+
+/* .form-input {
+width: 100%;         
+padding: 0.5em;      
+font-size: 1em;       
+}  */
+
+#msform  input.invalid, #msform  select.invalid,#msform  textarea.invalid {
+    border: 1px solid red;
+    
+}
