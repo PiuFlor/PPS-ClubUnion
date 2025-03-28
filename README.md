@@ -3,6 +3,8 @@
 
 Este proyecto consiste en la gestión y administración de un club de fútbol. El sistema ayuda a organizar de manera eficiente información sobre los socios, profesores, deportes y categorías del club, reemplazando el manejo manual en papel por una solución digital.
 
+El proyecto fue desarrollado utilizando **Django**, un framework web de Python, y fue realizado como parte de una pasantía. La aplicación permite gestionar todos los aspectos clave del club, mejorando la eficiencia administrativa.
+
 ## Funcionalidades principales:
 - Registro y administración de socios del club.
 - Gestión de profesores y deportes.
